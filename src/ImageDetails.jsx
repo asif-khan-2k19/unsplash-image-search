@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { saveAs } from "file-saver";
 
 const API_URL = "https://api.unsplash.com/photos";
@@ -43,7 +43,7 @@ function ImageDetails() {
   return <>
     {/* Main body */}
     <div className="w-full h-dvh bg-zinc-900 text-white">
-        <a href="/" className="fixed inline-flex gap-1 items-center left-0 top-0 m-6 text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg> Back</a>
+        <Link to="/" className="fixed inline-flex gap-1 items-center left-0 top-0 m-6 text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg> Back</Link>
         {/* Images section */}
         <div className="w-full bg-zinc-900 h-svh py-6 px-10 flex flex-wrap gap-2 justify-center">
           
