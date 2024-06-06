@@ -7,8 +7,8 @@ import { saveAs } from "file-saver";
 const API_URL = "https://api.unsplash.com/photos";
 
 function ImageDetails() {
-  const { id } = useParams() || localStorage.getItem("id").toString();
-  console.log(id)
+  const parameter = useParams();
+  const id = parameter.id || localStorage.getItem("id");
   // const [data, setData] = useState( [] || JSON.parse(localStorage.getItem("data")));
   // const [imageUrl, setImageurl] = useState( "" || localStorage.getItem("imageUrl"));
   
