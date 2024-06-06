@@ -8,7 +8,10 @@ const API_URL = "https://api.unsplash.com/photos";
 
 function ImageDetails() {
   const parameter = useParams();
+  // const parameter = useParams() || localStorage.getItem("id");
   const id = parameter.id || localStorage.getItem("id");
+  // console.log(id)
+  // console.log("localstoraged", localStorage.getItem("id") )
   // const [data, setData] = useState( [] || JSON.parse(localStorage.getItem("data")));
   // const [imageUrl, setImageurl] = useState( "" || localStorage.getItem("imageUrl"));
   
