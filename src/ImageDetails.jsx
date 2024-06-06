@@ -7,10 +7,13 @@ import { saveAs } from "file-saver";
 const API_URL = "https://api.unsplash.com/photos";
 
 function ImageDetails() {
-  const { id } = useParams();
+  const { id } = useParams() || localStorage.getItem("id").toString();
   console.log(id)
-  const [data, setData] = useState(JSON.parse(localStorage.getItem("data")) || []);
-  const [imageUrl, setImageurl] = useState(localStorage.getItem("imageUrl") || "");
+  // const [data, setData] = useState( [] || JSON.parse(localStorage.getItem("data")));
+  // const [imageUrl, setImageurl] = useState( "" || localStorage.getItem("imageUrl"));
+  
+  const [data, setData] = useState([]);
+  const [imageUrl, setImageurl] = useState("");
 
   const fetchData = async () => {
     try {
@@ -23,15 +26,16 @@ function ImageDetails() {
       console.log("data", data)
       localStorage.setItem("imageUrl", response.data.urls.full);
       localStorage.setItem("data", JSON.stringify(response.data));
+      localStorage.setItem("id", id);
       
     } catch (error) {
       console.log(error);
     }
   };
-  
+
   useEffect(()=>{
     fetchData();
-  },[])
+  }, [imageUrl])
 
   return <>
     {/* Main body */}
