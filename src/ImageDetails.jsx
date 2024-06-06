@@ -9,8 +9,8 @@ const API_URL = "https://api.unsplash.com/photos";
 function ImageDetails() {
   const { id } = useParams();
   console.log(id)
-  const [data, setData] = useState([]);
-  const [imageUrl, setImageurl] = useState("");
+  const [data, setData] = useState(JSON.parse(localStorage.getItem("data")) || []);
+  const [imageUrl, setImageurl] = useState(localStorage.getItem("imageUrl") || "");
 
   const fetchData = async () => {
     try {
@@ -21,10 +21,14 @@ function ImageDetails() {
       setImageurl(response.data.urls.full)
       console.log(response.data)
       console.log("data", data)
+      localStorage.setItem("imageUrl", response.data.urls.full);
+      localStorage.setItem("data", JSON.stringify(response.data));
+      
     } catch (error) {
       console.log(error);
     }
   };
+  
   useEffect(()=>{
     fetchData();
   },[])
@@ -32,18 +36,18 @@ function ImageDetails() {
   return <>
     {/* Main body */}
     <div className="w-full h-dvh bg-zinc-900 text-white">
-        
+        <a href="/" className="fixed inline-flex gap-1 items-center left-0 top-0 m-6 text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg> Back</a>
         {/* Images section */}
         <div className="w-full bg-zinc-900 h-svh py-6 px-10 flex flex-wrap gap-2 justify-center">
           
-          <div className="h-4/5 w-full flex flex-col items-center">
-            <img src={imageUrl} className="h-full rounded-lg " alt={data.slug} />
+          <div className="h-4/5 w-full flex flex-col items-center object-contain rounded-lg">
+            <img src={imageUrl} className="h-full rounded-lg object-contain" alt={data.slug} />
             <button onClick={() => {saveAs(imageUrl, data.slug)}} className=" cursor-pointer bg-zinc-800 flex gap-3 justify-center mt-3 p-4 rounded-lg w-3/4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg><h1>Download</h1></button>
           </div>            
           
         </div>
         {/* Footer */}
-        <div className="bg-zinc-900 text-center py-4 absolute bottom-0 w-full">
+        <div className="bg-zinc-900 text-center py-2 absolute bottom-0  w-full">
           Copyright &copy; <i>Mohammad Asif Khan</i> <br />
           
           <div className="socials flex gap-4 my-4 justify-center ">

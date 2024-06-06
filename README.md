@@ -71,4 +71,3 @@ VITE_API_KEY = your_api_key_here
 - [Unsplash API](https://unsplash.com/developers)
 - [Vite](https://vitejs.dev/)
 - [React](https://reactjs.org/)
-```
