@@ -47,7 +47,7 @@ function ImageDetails() {
         {/* Images section */}
         <div className="w-full bg-zinc-900 h-svh py-6 px-10 flex flex-wrap gap-2 justify-center">
           
-          <div className="h-4/5 w-full flex flex-col items-center object-contain rounded-lg">
+          <div className="h-3/5 mt-20 md:mt-0 md:h-4/5 w-full flex flex-col items-center object-contain rounded-lg">
             <img src={imageUrl} className="h-full rounded-lg object-contain" alt={data.slug} />
             <button onClick={() => {saveAs(imageUrl, data.slug)}} className=" cursor-pointer bg-zinc-800 flex gap-3 justify-center mt-3 p-4 rounded-lg w-3/4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg><h1>Download</h1></button>
           </div>            

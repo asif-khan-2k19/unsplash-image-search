@@ -95,24 +95,26 @@ function App() {
         {images.length > 0 && (
           <div className="w-full flex gap-4 justify-center py-5 bg-zinc-900">
             {page > 1 && (
-              <button
-                className="bg-blue-500 px-5 py-3 rounded-3xl w-32"
+              <a
+                href="#"
+                className="bg-blue-500 px-5 py-3 rounded-3xl w-32 inline-block text-center"
                 onClick={() => {
                   setPage(page - 1);
                 }}
               >
                 Previous
-              </button>
+              </a>
             )}
             {page < totalPages  && (
-              <button
-                className="bg-blue-500 px-5 py-3 rounded-3xl w-32"
+              <a
+                href="#"
+                className="bg-blue-500 px-5 py-3 rounded-3xl w-32 inline-block text-center"
                 onClick={() => {
                   setPage(page + 1);
                 }}
               >
                 Next
-              </button>
+              </a>
             )}
           </div>
         )}
